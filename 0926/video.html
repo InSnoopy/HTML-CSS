@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        video{
+            width:500px;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <!-- <video src="../videos/김연아.mp4" autoplay muted>
+    </video> -->
+    
+    <video src="../videos/김연아.mp4" autoplay muted controls>
+        <!-- 어느 브라우저로 들어가도 지원이 안되더라도 그 밑에 있는 것을 지원하도록 하는 방법도 있다. -->
+        <source src="../videos/김연아.mp4">
+        <source src="../videos/김연아.mkv">
+        <source src="../videos/김연아.avi">
+        <!-- track은 자막을 넣어 준다. -->
+        <track src="sample-ko.vtt" default></track>
+    </video>
+</body>
+</html>

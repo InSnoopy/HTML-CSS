@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        img{
+            width:100px;
+            height: 100px;
+            display:block;
+            /* font-size:0으로 했던 것처럼 공백이 사라진다. */
+            float:left;
+        }
+        #parent{
+            border:10px solid olive;
+            width:100px;
+            height: 100px;
+            position: relative;
+            left:200px;
+            top:100px;
+            /* 부모영역안 컨텐츠의 용량이 초과되었을 때 제어 */
+            /* overflow: hidden; */
+        }
+        .child{
+            position: absolute;
+            width: 400px;
+            background-color: red;
+        }
+        /* .child:nth-child(1){
+            left:0px;
+            top:0px;
+        }
+        .child:nth-child(2){
+            left:200px;
+            top:0px;
+        } */
+        
+    </style>
+</head>
+<body>
+    <div id="parent">
+        <div id="id_chd1" class="child" style="left:0px;">
+            <img src="/parkinsoo/images/imgs/꼬부기1.jpg" alt="꼬부기">
+            <img src="/parkinsoo/images/imgs/꼬부기2.jpg" alt="꼬부기">
+            <img src="/parkinsoo/images/imgs/꼬부기3.jpg" alt="꼬부기">
+            <img src="/parkinsoo/images/imgs/꼬부기4.jpg" alt="꼬부기">
+        </div>
+
+        <div id="id_chd2" class="child" style="left:400px;">
+            <img src="/parkinsoo/images/imgs/혜수.jpg" alt="꼬부기">
+            <img src="/parkinsoo/images/imgs/꼬부기6.jpg" alt="꼬부기">
+            <img src="/parkinsoo/images/imgs/꼬부기7.jpg" alt="꼬부기">
+            <img src="/parkinsoo/images/imgs/꼬부기8.jpg" alt="꼬부기">
+        </div>
+
+    </div>
+
+    <script>
+        
+        // document.getElementById
+        // document.getElementsByClassName
+        // document.getElementsByName
+        // document.getElementsByTagName
+
+        var v_chd1 = document.querySelector('#id_chd1');
+        var v_chd2 = document.getElementById('id_chd2');
+        // alert("인라인스타일정보있음? [" + v_chd1.style.left + "]")
+        // 인라인스타일로 초기화가 필요하지만 직접 inline style을 정의했음
+
+        var v_mvWidth = 100; // 이동할 거리 데이터를 셋팅
+
+        function f_move(){
+            console.log(parseInt(v_chd1.style.left) - v_mvWidth);
+            v_chd1.style.left = parseInt(v_chd1.style.left) - v_mvWidth + "px";
+            v_chd2.style.left = parseInt(v_chd2.style.left) - v_mvWidth + "px";
+            
+            if(parseInt(v_chd1.style.left) == -400){
+                v_chd1.style.left = "400px";
+            }
+            
+
+            setTimeout(f_move,1000);
+        }
+        
+        f_move();
+
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+
+    <style>
+        img{
+            width:100px;
+            height: 140px;
+        }
+        
+        #wrapper{
+            border: 2px solid red;
+            width:220px;
+            height: 500px;
+            position: relative;
+        }
+        .btn{
+            position: absolute;
+            left:110px;
+        }
+        .panel{
+            position: absolute;
+            top:30px;
+        }
+    </style>
+
+    <script>
+
+        // ★전역 변수로 쓰기 위해서 선언만 했다.
+        var v_panel;
+        var v_text;
+        // window.onload = function(){} : 밑에 있는 html 코드를 다 실행하고 아래 함수를 실행해라~
+        window.onload = function(){
+
+            // 배열로 담으려면 All
+            // var은 function 안에서만 유효하다.
+            // var v_panel = document.querySelectorAll('.panel');
+            v_panel = document.querySelectorAll('.panel'); // ★지역변수
+            console.log(v_panel);
+
+            // 하나만 선택
+            v_text = document.querySelector('#id_text');
+            v_text.value = 1 + " / " + v_panel.length;
+            console.log(v_text.value)
+        }
+
+        var v_layerIndex = 0;
+        function f_next(){
+
+            // panel z-index의 초기화 필요..
+            for(var i=0; i<v_panel.length; i++){
+                v_panel[i].style.zIndex = 1;
+            }
+
+            v_layerIndex++; // 1 = 2번째 레이어(wok)가 보이도록..
+
+            // 마지막 레이어에 도달했을때 처음 레이어로 다시 되돌리기..
+            if(v_layerIndex == v_panel.length){
+                v_layerIndex = 0;
+            }
+
+            v_panel[v_layerIndex].style.zIndex = 999;
+            v_text.value = (v_layerIndex + 1) + " / " + v_panel.length;
+            
+        }
+
+        function f_prev(){
+
+            for(var i=0; i<v_panel.length; i++){
+                v_panel[i].style.zIndex = 1;
+            }
+
+            v_layerIndex--; 
+
+            console.log(v_layerIndex)
+    
+            if(v_layerIndex == -1){
+                v_layerIndex = v_panel.length -1;
+            }
+
+            v_panel[v_layerIndex].style.zIndex = 999;
+            v_text.value = (v_layerIndex + 1) + " / " + v_panel.length;
+        }
+
+
+
+    </script>
+
+</head>
+<body>
+    <div id="wrapper">
+
+        <div class="btn">
+            <input type="button" value="&lt;" onclick="f_prev();">
+            <input id="id_text" value="" size="1">
+            <input type="button" value="&gt;" onclick="f_next();">
+        </div>
+
+        <div class="panel" style="z-index: 999;">
+            <table border="1">
+                <tr>
+                    <td><img src="../images/imgs/꼬부기1.jpg" alt=""></td>
+                    <td><img src="../images/imgs/꼬부기2.jpg" alt=""></td>
+                </tr>
+                <tr>
+                    <td><img src="../images/imgs/꼬부기3.jpg" alt=""></td>
+                    <td><img src="../images/imgs/꼬부기4.jpg" alt=""></td>
+                </tr>
+                <tr>                   
+                    <td><img src="../images/imgs/꼬부기5.jpg" alt=""></td>
+                    <td><img src="../images/imgs/꼬부기6.jpg" alt=""></td>
+                </tr>
+            </table>
+        </div>
+        
+        <div class="panel" style="z-index: 888;">
+            <table border="1">
+                <tr>
+                    <td><img src="../images/imgs/꼬부기6.jpg" alt=""></td>
+                    <td><img src="../images/imgs/꼬부기5.jpg" alt=""></td>
+                </tr>
+                <tr>
+                    <td><img src="../images/imgs/꼬부기4.jpg" alt=""></td>
+                    <td><img src="../images/imgs/꼬부기3.jpg" alt=""></td>
+                </tr>
+                <tr>                   
+                    <td><img src="../images/imgs/꼬부기2.jpg" alt=""></td>
+                    <td><img src="../images/imgs/꼬부기1.jpg" alt=""></td>
+                </tr>
+            </table>
+        </div>
+        
+        <div class="panel" style="z-index: 777;">
+            <table border="1">
+                <tr>
+                    <td><img src="../images/imgs/꼬부기3.jpg" alt=""></td>
+                    <td><img src="../images/imgs/꼬부기4.jpg" alt=""></td>
+                </tr>
+                <tr>
+                    <td><img src="../images/imgs/꼬부기5.jpg" alt=""></td>
+                    <td><img src="../images/imgs/꼬부기6.jpg" alt=""></td>
+                </tr>
+                <tr>                   
+                    <td><img src="../images/imgs/꼬부기1.jpg" alt=""></td>
+                    <td><img src="../images/imgs/꼬부기2.jpg" alt=""></td>
+                </tr>
+            </table>
+        </div>
+
+    </div>
+
+
+
+</body>
+</html>

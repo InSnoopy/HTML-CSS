@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        /* margin collapse 현상을 막는 요소를 가린다. */
+        hr{
+            /* 요소 숨김 */
+            visibility: hidden;
+            /* dsiplay : 로 하면 margin collapse현상이 다시 생긴다. */
+            /* 그 이유는 display는 요소를 아예 없어지게 만든다. */
+            /* display: none; */
+        }
+
+        div{
+            width: 200px;
+            height: 100px;
+            background-color: yellow;
+            border:4px solid red;
+            /* box-sizing : 박스 크기를 딱 정해준다. padding으로 그 이상으로 넘어가도 박스 size는 변화가 없다. */
+            box-sizing: border-box;
+            /* margin collapse(붕괴) 현상 : 요소의 상,하 margin이 겹칠 때 더 큰 한쪽의 값만 적용하는 브라우저 규칙 */
+            /* 이런 현상을 막는 방법 : 컨텐츠 사이에 다른 요소를 넣는다. */
+            margin: 20px;
+        }
+        #small{
+            border:4px solid green;
+            padding: 5px;
+            margin-bottom:30px;
+        }
+        #large{
+            border:14px solid magenta;
+            padding:15px;
+            margin: auto;
+        }
+
+    </style>
+</head>
+<body>
+    <!-- 
+        margin : 음수값 허용 / *auto 지정시 가운데 정렬 / margin collapse
+        padding : box-sizing - border-box를 이용해 콘텐츠 사이즈에 안쪽여백과 border사이를 포함 시킨다.
+
+        *auto지정 : 브라우저에 의해 계산되어 콘텐츠 너비를 제외한 
+                    나머지 여백을 균등하게 분할하여 가운데 정렬 효과를 얻음
+     -->
+    <div id="small"></div>
+    <hr>
+    <div id="large"></div>
+</body>
+</html>

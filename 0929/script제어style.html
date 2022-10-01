@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        #id_disp{
+            background-color: blue;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <h3>개발자가 알아야 할 CSS는 많지 않음</h3>
+    <!-- <div id="id_disp" style="background-color: navy; color:white; display:block;"> -->
+    <div id="id_disp">
+        <h2>하하하하하하하</h2>
+    </div>
+    <input type="button" value="버튼" onclick="f_click()">
+
+    <script>
+
+        var v_colors = ["blue","red","orange","green","purple","olive"];
+
+        function f_click(){
+            
+            // document.getElementById('id_disp').style.backgroundColor='red';
+            // var x = document.getElementById('id_disp')
+            // if(x.style.backgroundColor='blue'){
+            //     x.style.backgroundColor='red';
+            // }else if(x.style.backgroundColor='red'){
+            //     x.style.backgroundColor='black';
+            // }else{
+            //     x.style.backgroundColor='blue';
+            // }
+
+            // 스크립트로 제어할 수 있는 스타일 정보는 태그안의 inline만 가능
+            // alert(document.getElementById(id_disp) + id_disp.style.backgroundColor);
+            // alert("display>>" + id_disp.style.display);
+
+            // if(id_disp.style.display == "none"){
+            //     id_disp.style.display = "block";
+            // }else{
+            //     id_disp.style.display = "none";
+            // }
+            
+            var x = document.getElementById('id_disp')
+            // 랜덤 숫자 꺼내기
+            // Math.floor(Math.random()*v_colors.length) 
+            // 배열안에 있는 것을 랜덤으로 꺼내기
+            var ranClr = v_colors[Math.floor(Math.random()*v_colors.length) ]
+            // document.write(ranClr);
+            x.style.backgroundColor=ranClr;
+
+            // 1초마다 랜덤으로 색상이 자동으로 변경된다
+            setTimeout(f_click,1000);
+            
+        }
+
+
+
+        
+    </script>
+</body>
+</html>
+
+

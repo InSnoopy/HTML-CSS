@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <!-- 내부 스타일시트로 활용할 것을 권장 -->
+    <style>
+        img{
+            width:300px;
+            height: 200px;
+        }
+    </style>
+</head>
+<body>
+    <pre>
+    <!-- 
+        / root 최상단 경로
+        . 현재위치
+        .. 현재 위에 상단(=부모) 
+        alt : alternative(대안) : 이미지가 지원되지 않을 때 글자로 대체(웹 접근성)
+    -->
+
+    </pre>
+
+    <!-- 절대경로 : 파일이 있는 경로-->
+    <!-- 아래는 오류가 난다. 내 컴퓨터 안에 있는 자료 자체를 보여줄 순 없다. 보안상의 이유로 -->
+    <!-- <img src="D:\A_TeachingMaterial\11_vscodeWeb\parkinsoo\images\imgs" alt=""> -->
+
+    <!-- 반절대경로 : 파일이 있는 경로-->
+    <!-- localhost이후의 경로로 접근하면 이미지 표현 가능 -->
+    <img src="/parkinsoo/images/imgs/혜수.jpg" width="200px" height="100px" alt="전혜수">
+
+    <!-- 상대경로 : 현재 위치를 기준으로 찾는 경로 -->
+    <img src="../../images/imgs/혜수.jpg" alt="전혜수">
+    
+</body>
+</html>

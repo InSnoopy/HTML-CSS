@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+<style>
+    #parent{
+        /* absolute의 부모가 되기 위한 자격 => static한 상태가 아닐 것 */
+        /* position을 적지 않으면 기본값인 static으로 되어 있다. */
+        position: relative;
+        left:100px;
+        top:100px;
+    }
+    .child{
+        border:1px solid black;
+        /* position의 기본값 : static => 방향속성의 적용을 받지 않는다.*/
+        /* position: relative; => 정적위치에서 방향속성의 적용을 받음*/
+        /* position: absolute; => 부모의 위치에서 방향속성의 적용을 받음 */
+
+        /* absolute : 부모를 기준으로 잡는다. */
+        /* relative로 기준을 잡지 않으면 윈도우 창을 기준으로 잡는다. */
+        position: absolute;
+    }
+    .roze{
+        background-color: pink;
+        left:10px;
+        top:50px;
+    }
+    /* .jeni{
+        background-color: hotpink;
+        left:30px;
+        top:70px;
+        z-index: 1;
+    } */
+    .lisa{
+        background-color: rosybrown;
+        left:50px;
+        top:90px;
+        
+    }
+    .jisu{
+        background-color: azure;
+        left:70px;
+        top:100px;
+    }
+</style>
+</head>
+<body>
+
+    <div id="parent">
+        <div class="child roze">로제</div>
+        <div class="child jeni">제니</div>
+        <div class="child lisa">리사</div>
+        <div class="child jisu">지수</div>
+    </div>
+    <input type="button" value="+버튼" onclick="p_move()">
+    <input type="button" value="-버튼" onclick="m_move()">
+
+    <script>
+        var v_arr = document.getElementsByClassName('child');
+        console.log("제니 => " + v_arr[1]);
+
+        function p_move(){
+            // 내부 스타일시트에서 인라인스타일로 초기화를 하기!!
+            // alert("스타일정보 유무확인 [" + v_arr[1].style.left +"]");
+            if(!v_arr[1].style.left){ // inline스타일로 정의되어있지 않을 때 - 처리
+                v_arr[1].style.left = "30px";
+            }
+            // paersInt()메서드는 문자열이 되어 있어도 int만 추출해서 int로 만들어준다.
+            v_arr[1].style.left = parseInt(v_arr[1].style.left) + 10 + "px";
+
+            setTimeout(p_move,500);
+        }
+        
+        function m_move(){
+            if(!v_arr[1].style.left){
+                v_arr[1].style.left = "30px";
+            }
+            v_arr[1].style.left = parseInt(v_arr[1].style.left) - 10 + "px";
+
+            setTimeout(m_move,500);
+        }
+    </script>
+</body>
+</html>

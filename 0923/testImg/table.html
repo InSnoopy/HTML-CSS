@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+
+    <style>
+        /* 인라인 스타일로 쓰게 되면 다른 부분에도 다 설정해줘야한다.
+        그렇기 때문에 table인 경우 인라인으로 써주는게 좋다. */
+        table{
+            /* border-style: solid;
+            border-width: px;
+            border-color: red; */
+            /* border 색상, 굵기, 스타일 이렇게 3개 쓸 수 있다. */
+            border: 4px solid pink;
+            width:70%;
+
+            /* border 경계선 설정 */
+            /* border-collapse: collapse; */
+
+            /* 셀 경계선 사이의 거리 설정 */
+            border-spacing: 1px; /* border-collapse가 있으면 적용 X */
+            caption-side: bottom;
+            /* default : auto => 콘텐츠 양에 따라 너비값이 자동 조절 */
+            /* table-layout: fixed; */
+        }
+        th, td{
+         
+         border: 2px blue dotted;
+        }
+        #three{
+            width:300px;
+        }
+        /* even:짝수 / odd:홀수 */
+        tr:nth-child(even){
+            background-color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <table border="1">
+        <tr>
+            <th>제목</th>
+            <th>제목</th>
+            <th>제목</th>
+            <th>제목</th>
+        </tr>
+        <tr>
+            <td>내용</td>
+            <td>내용</td>
+            <td>내용</td>
+            <td>내용</td>
+        </tr>
+    </table>    
+
+    <br>
+
+    <!-- vscode기능) table>tr*3>td*4 작성하면 -->
+    <!-- 틀이 잡힌다. -->
+    <table>
+        <tr>
+            <th>1행 1열</th>
+            <th>1행 2열</th>
+            <th>1행 3열</th>
+            <th>1행 4열</th>
+        </tr>
+        <tr>
+            <td rowspan="2">2행 1열</td>
+            <td>2행 2열</td>
+            <td>2행 3열</td>
+            <td>2행 4열</td>
+        </tr>
+        <tr>
+            <!-- <td>3행 1열</td> -->
+            <td>3행 2열</td>
+            <td>3행 3열</td>
+            <td>3행 4열</td>
+        </tr>
+        <tr>
+            <td colspan="4">4행 1열</td>
+            <!-- <td>4행 2열</td> -->
+            <!-- <td>4행 3열</td> -->
+            <!-- <td>4행 4열</td> -->
+        </tr>
+    </table>
+
+</body>
+</html>

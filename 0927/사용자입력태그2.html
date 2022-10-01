@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+
+    <!-- radio버튼 사용시 name값을 공통으로 하여 그룹핑 시킬 필요가 있다. -->
+    <!-- name에 공통된 이름을 넣게되면 하나의 값만 선택 가능하다. -->
+
+        여자<input type="radio" name="gender" value="female">
+        남자<input type="radio" name="gender" value="male">
+        <!-- <input type="button" value="선택버튼" onclick="f_radio();"> -->
+        <hr>
+        <input type="checkbox" name="hobby" id="java">자바
+        <input type="checkbox" name="hobby" id="javascript">자바스크립트
+        <input type="checkbox" name="hobby" id="html">HTML
+        <input type="checkbox" name="hobby" id="css">CSS
+        <hr>
+        <input type="button" value="버튼" onclick="f_checked()">
+        
+<script>
+    //document(객체) - getElementsByName() : 선택자의 역할을 하는 메소드
+    function f_checked(){
+        
+        // 방법 1
+        // var radioVal = document.querySelector('input[name="gender"]:checked').value;
+        // alert("선택한 성별은 " + radioVal)
+
+        
+        // 방법 2
+        var radios = document.getElementsByName("gender");
+        console.log(radios);
+        console.log(radios[0]);
+        console.log(radios[1]);
+        for(var i=0; i<radios.length; i++){
+            console.log(radios[i].checked);
+            if(radios[i].checked){
+                // alert("선택한 성별은 " + radios[i].value);
+                console.log(radios[i].value);
+            }
+        }
+        
+        // console.log(radios);
+
+
+        //여기부터 체크박스 값을 콘솔로 표현할 코드를 입력하세요.
+        // console.log(radioVa2);
+        var checkList ="";
+        var radios2 = document.getElementsByName("hobby");
+        // var radios2 = document.querySelectorAll("hobby");
+        for(var i=0; i<radios2.length; i++){
+            // console.log(radios2[i].checked);
+            if(radios2[i].checked){
+                // alert("선택한 성별은 " + radios[i].value);
+                // console.log(radios2[i].id);
+                checkList += radios2[i].id
+            }
+        }
+        console.log(checkList);
+
+
+    };    
+</script>
+</body>
+</html>

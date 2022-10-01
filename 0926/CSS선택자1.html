@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        /* 요소(태그)선택자 */
+        div{
+            color: rgb(100, 255, 211);
+            background-color: black;
+        }
+        /* id선택자 */
+        #tkv{
+            font-size: 40px;
+            color:rgb(255,0,0);
+        }
+        #og{
+            font-size: 50px;
+            color:aquamarine
+        }
+        /* class선택자 */
+        .a{
+            color:wheat;
+            font-size: 40px;
+        }
+        /* div면서 class가 "b" 요소인 것 */
+        div.b{
+            background-color: red;;
+        }
+        /* 전체 석택자 */
+        *{
+            border: 3px solid blue;
+        }
+        /* p와 클래스a 스타일 적용 */
+        p, .a{
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <!-- id는 페이지 내 유일한 값으로 지정하고, class는 중복 가능 -->
+    <div class="b a">마징가</div>
+    <div id="tkv">태권V</div>
+    <div class="a" id="tkv">그랜저다이저</div>
+    <p>나는 p태그</p>
+    <div id="og">손오공</div>
+    <div id="tkv">완다</div>
+    
+</body>
+</html>
