@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    // 조건문 반복문의 문법은 자바와 거의 같다.
+    // => 자바와 자바스크립트 모두 C언어로부터 출발되었기 때문에..
+
+    // 문자열은 : ""(공백)만 false로 형변환되고 나머지는 true
+    // 숫자는 0만 false로 형변환되고 나머지는 true..
+    // true로 사용하면 4자 코딩, !0으로 쓰면 2자로 2자를 절약함
+    // if(!0){
+    //     alert("참이야");
+    // }else{
+    //     alert("거짓이야");
+    // }
+
+    // 객체순회 - for in
+    // for(var x in document){
+    //     console.log(document[x]);
+    // }
+
+    //break, contunue
+    var msg = "";
+    for(var i=0; i<10; i++){
+        if(i==3){
+            // continue; // 3만 출력이 안된다.
+            break; // 0,1,2만 출력된다.
+        }
+        msg += i + "<br>";
+    }
+    document.write(msg);
+
+</script>
+</body>
+</html>

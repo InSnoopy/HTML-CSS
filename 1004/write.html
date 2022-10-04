@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+<style>
+    
+</style>
+</head>
+<body>
+    
+    <input type="button" value="클릭" onclick="f_write();">
+
+<script>
+    
+    function f_write(){
+        // document.write : 기존에 있던 요소는 날리고 덮어서 새로운 요소를 만든다.
+        // document.write : 기존에 만들어진 요소에 덮어씌워지는 특징 존재 - 주의 요망
+        document.write("<div style='border:1px solid red;'>DIV</div>");
+        document.write(`<img src='../images/imgs/꼬부기5.jpg'>`); // ` : 문자열로 만들어준다.
+    }
+
+
+</script>
+
+</body>
+</html>

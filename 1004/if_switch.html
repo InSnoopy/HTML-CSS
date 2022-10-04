@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <h3>숫자 2개와 연산자 1개를 입력하고 결과 출력</h3>
+    <!-- <div id="id_disp"></div> -->
+    <div>2</div>
+    <div>3</div>
+    <input type="button" value="계산" onclick="calc()";>
+    결과 값 : <input type="text" id="id_disp">
+<style>
+    div{
+        border:1px solid blue;
+    }
+</style>
+<script>
+    function calc(){
+        // var v_pmpt = prompt("1번째는 필수", "2번째는 옵션");
+        // console.log(v_pmpt + typeof v_pmpt); 
+
+        var sum = 0;
+
+        var a = Number(prompt("첫번째 정수 입력"));
+        var b = parseInt(prompt("두번째 정수 입력"));
+        var c = prompt("연산자 입력","+,-,*,/ 중 하나");
+
+        // console.log(a+","+b+","+c);
+        
+        //switch
+        switch (c) {
+            case '+':
+                sum = a + b;
+                break;
+            case '-':
+                sum = a - b;
+                break;
+            case '*':
+                sum = a * b;
+                break;
+            default:
+                alert("사칙연산자를 입력하세요");
+                return calc();
+        }
+
+
+
+
+        // if 문
+        // if(c == '+'){
+        //     sum = a + b;
+        // }else if(c == '-'){
+        //     sum = a - b;
+        // }else if(c == '*'){
+        //     sum = a * b;
+        // }else{
+        //     alert("사칙연산자를 입력하세요");
+        //     return calc(); // 다시 calc()메소드 실행
+        // }
+
+        // console.log(sum);
+        // document.getElementById('id_disp').innerHTML = sum; // innerHTML로 넣을 수 있다.
+        // document.querySelector('div').innerHTML = sum;
+        // document.getElementsByTagName('div')[0].innerHTML = sum // 여러개 <div>태그중에 [n]번째
+        document.querySelector("#id_disp").value = sum;
+
+    }
+</script>
+</body>
+</html>
