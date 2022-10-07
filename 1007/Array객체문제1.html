@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        #text_box{
+            width:120px;
+            height: 200px;
+            border:2px solid black;
+        }
+    </style>
+</head>
+<body>
+    <input type="button" value="사용자 이름 입력" onclick="user_name()">
+    <div id="text_box"></div>
+</body>
+<script>
+
+    var name_list = [];
+
+    function user_name(){
+        while(true){
+            var u_name = prompt("이름을 입력하세요.")
+            if(u_name == "취소" || u_name == " "){
+                break;
+            }
+            name_list.push(u_name);
+            console.log(name_list);
+            document.getElementById('text_box').innerHTML += u_name; 
+        }
+    }
+
+</script>
+</html>

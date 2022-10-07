@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+
+    console.log(new Date());            // Fri Oct 07 2022 17:10:06 GMT+0900 (한국 표준시)
+    console.log(new Date(1000));        // Thu Jan 01 1970 09:00:01 GMT+0900 (한국 표준시)
+    console.log(new Date("2022.10.07"));// Fri Oct 07 2022 00:00:00 GMT+0900 (한국 표준시)
+    // month는 0부터 시작
+    console.log(new Date(2022,10,07));  // Mon Nov 07 2022 00:00:00 GMT+0900 (한국 표준시)
+
+    console.log(new Date().toLocaleString()); // 2022. 10. 7. 오후 5:12:31
+    console.log(new Date().toLocaleDateString()); // 2022. 10. 7.
+    console.log(new Date().toLocaleTimeString()); // 오후 5:13:20
+
+    var today = new Date();
+    var test = today.getTime();
+    console.log("1970~현재까지ms", test);
+    console.log(test/1000/60/60/24/365, "년"); // 1970~현재까지ms // 1665130560312
+
+
+</script>
+</html>
