@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    var arr=["최경수","박시윤","유나래","최경수","민경진","김서빈","이찬영"];
+
+    //indexOf(value, start) - 위치 idex를 반환 lastIndexOf()
+    var name = "최경수";
+    var arrIdx = arr.indexOf(name); // 0 - index 0부터 찾아본다.
+    var arrIdx = arr.indexOf(name,1); // 3 - index 1부터 찾아본다.
+    console.log(arrIdx);
+    
+    //lastIndexOf(value, endIdx) - 위치index를 뒤에서부터 검색 후 반환
+    var arrIdx2 = arr.lastIndexOf(name); // 뒤에서부터 idex
+    console.log(arrIdx2) // 3
+    var arrIdx2 = arr.lastIndexOf(name, 0); // 뒤에서부터 idex
+    console.log(arrIdx2);
+
+    // push(배열 끝에 추가), unshift(배열 처음에 추가)
+    arr.push("허근주"); // "허근주" 추가
+    console.log(arr);
+    
+
+    // pop(배열 끝 요소 삭제 및 반환), shift(배열 처음 요소 삭제 및 반환)
+    arr.pop(); // "허근주" 삭제
+    console.log(arr);
+
+    // reverse 
+    console.log(arr.reverse()); // 배열 거꾸로 출력
+
+    // slice (start ~ end-1 범위를 새 배열로 만듦)
+    console.log(arr.slice(2,5));
+
+    // splice - 배열의 수정 (삭제 및 요소추가)
+    // splice(idx,n,a,b,c,...)
+    // 삭제위치,삭제갯수,추가a,추가b,추가c,...
+    
+    console.log("기존 : " + arr);
+    arr.splice(3,3,"박인수","윤호현","전혜수");
+    console.log("변경 : " + arr);
+
+    // concat - 배열 합치기
+    var arr1 = [1,2,3];
+    var arr2 = [true,false];
+    var arr3 = ["점심","시간"];
+    var newArr = arr1.concat(arr2, arr3);
+    console.log(newArr);
+    console.log(newArr[5]);
+
+    // join - 배열을 하나의 문자열로 만들고 구분자를 생략시 콤마로 표시
+    var joinArr = arr.join();
+    console.log(joinArr[3]);
+
+</script>
+</html>

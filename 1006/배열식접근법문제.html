@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <div id="id_disp"></div>
+<script>
+    var grades = {
+        "dd001" : "사장",
+        "dd002" : "전무",
+        "dd003" : "수석개발자",
+        "dd008" : "천재개발자",
+        "dd000" : "미확인",
+    };
+    var sawons = [
+        {name : "이선민",grade : "dd001"},
+        {name : "전혜수",grade : "dd002"},
+        {name : "윤호현",grade : "dd003"},
+        {name : "이수현",grade : "dd008"},
+        {name : "박인수",grade : "dd000"}
+    ];
+
+    // 생성된 요소를 출력할 영역
+    var v_disp = document.querySelector('#id_disp');
+
+    // 문자열 더하기를 이용해 요소생성하기 - table
+    // var v_tbl = "<table border=1>";
+    // v_tbl += "<tr><th>순번</th><th>이름</th><th>직급</th></tr>";
+    // v_tbl += "<tr>";
+    // v_tbl += "<td>내용이</td>";
+    // v_tbl += "<td>반복해서</td>";
+    // v_tbl += "<td>들어가요..</td>";
+    // v_tbl += "</tr>";
+    // v_tbl += "</table>";
+    
+    
+
+    var v_tbl = "<table border=1>";
+    v_tbl += "<tr><th>순번</th><th>이름</th><th>직급</th></tr>";
+    for(var i=0; i<sawons.length; i++){
+
+        v_tbl += "<tr>";
+        v_tbl += `<td>${i+1}</td>`;
+        v_tbl += `<td>${sawons[i].name}</td>`;
+        // console.log(sawons[i].grade)
+        var x = sawons[i].grade;
+        v_tbl += `<td>${grades[x]}</td>`; // x는 String이다. 이런 경우 ""없이 []안에 넣으면 된다.
+        v_tbl += "</tr>";
+
+    }
+    v_tbl += "</table>";
+    
+    v_disp.innerHTML = v_tbl;
+
+    
+</script>
+</body>
+</html>
