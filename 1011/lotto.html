@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="/js/random.js"></script>
+</head>
+<body>
+    <!-- 로또 번호를 생성하는 프로그램을 작성하시오. -->
+    <!-- (1번 ~ 45번 중 6개의 번호를 추첨) -->
+    <input type="button" value="로또 번호 생성" onclick="f_lotto()">
+    <div id="lottoTxt"></div>
+</body>
+<script>
+
+    function f_lotto(){
+        var lottoNumbers = [];
+        
+        for(var i=0; i<6; i++){
+            var lottoNum = f_random(1,45);
+            if(lottoNumbers.indexOf(lottoNum) == -1){
+                // lottoNumbers[i] = lottoNum;
+                console.log(lottoNum);
+                lottoNumbers.push(lottoNum);
+            }else{
+                i--;
+            }
+        }
+        lottoNumbers.sort(function(a,b){return a-b}); // 오름차순 정렬
+        document.querySelector('#lottoTxt').innerHTML += lottoNumbers + "<br>";
+        console.log(lottoNumbers);
+    }
+
+
+</script>
+</html>

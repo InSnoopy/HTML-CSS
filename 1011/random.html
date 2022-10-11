@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="/js/random.js"></script>
+</head>
+<body>
+    
+</body>
+<script>
+
+    // 0.0 <= Math.random() < 1.0
+    // Math.floor(Math.random() * (최대값-최소값+1)+최소값);
+    // Math.round(Math.random() * (최대값-최소값)+최소값);
+
+    // 0~1사이 소수점 난수 발생
+    console.log(Math.random());
+    
+    // 1~10까지 숫자 발생
+    // Math.ceil() : 실수를 정수로 올림
+    console.log(Math.ceil(Math.random()*10));
+    
+    // 0~10까지 숫자 발생
+    // Math.floor() : 실수를 내림 함수
+    console.log(Math.floor(Math.random()*11));
+
+    // 4~9까지 숫자 발생
+    console.log(Math.floor(Math.random()*6)+4);
+
+    // 65~100까지 숫자 발생
+    console.log(Math.floor(Math.random()*36)+65);
+    console.log("65~100", f_random(65,100));
+
+
+
+
+</script>
+</html>

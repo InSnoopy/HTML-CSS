@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    
+    <h4>주민등록번호에서 정보 추출(생일,성별,나이)</h4>
+    <input type="button" value="추출" onclick="f_info()">
+    <div id="dl"></div>
+    <h4>주민등록번호 유효성 검증</h4>
+    
+    <h4>주민등록번호에서 정보 추출(생일,성별,나이)</h4>
+    <input type="button" value="추출" onclick="f_valid()">
+    <div id="dl2"></div>
+    <h4>주민등록번호 유효성 검증</h4>
+
+</body>
+<script>
+
+    function f_valid(){
+        var jumin = prompt("주민번호 입력","110326-4432618");
+        // "-" 제거 방법1 - replace()
+        // replace는 변경한걸 보여주는 것 뿐 기존의 jumin을 변경해줘야 한다.
+        // var newStr = jumin.replace("-","");
+        // jumin = newStr;
+        // jumin = jumin.replace("-",""); <- 이렇게 쓰면 된다.
+        // console.log(newStr, jumin);
+
+        // "-" 제거 방법2 - split()
+        var idNum = jumin.split("-");
+        var jumin = idNum[0].concat(idNum[1]);
+        // console.log(jumin);
+
+        // 공식 적용하기
+        // (ABCDEF-GHIJKLM)        
+        // 공식1) 각 항목에 2~9까지 수 곱하여 총 합 구하기
+        
+        // 총 합 구하기 방식1. 배열 값 활용하기
+        var hap = 0;
+        var num = "234567892345"
+        console.log(jumin.length);
+        for(var i=0; i<jumin.length-1; i++){
+            console.log("idx", num[i], jumin[i])
+            hap += Number(jumin[i])*Number(num[i]);
+            console.log(hap);
+        }
+        
+        // 총 합 구하기 방식2. 순차적인 값을 도출해내는 공식 활용
+        // var hap = 0;
+        // for(var i=0; i<jumin.length-1; i++){
+        //     hap += idNum[i]* (i%8+2)
+        // }
+        
+        // 공식2) 공식1의 hap을 11로 나눈 나머지를 구한다.
+        // 공식3) 공식2의 결과에서 11를 뺀다.
+        var rst = 11 - (hap % 11);
+        console.log(rst);
+
+        // 공식4) 공식3의 결과가 0~9이면 값 그대로, 10이면 0, 11이면 1로 변환
+        if(rst >= 0 || rst <= 9){
+            rst = rst;
+        }else if(rst == 10){
+            rst = 0;
+        }else if(rst == 1){
+            rst = 1;
+        }
+
+        // 공식4) 몫이 10일때 0, 11일때, ...
+        // rst = rst%10;
+
+        // 공식5 공식4의 결과와 M자리의 값이 같으면 맞는 번호이다.
+        var last = jumin.charAt(idNum.length); // 마지막 위치 값 가져옴
+
+        var result = "";
+        if(last == rst){
+            result = "주민번호가 유호하네요";
+        }else{
+            result = "주민번호가 유효하지 않습니다.";
+        }
+
+        // 출력 데이터 작성
+        var str = `입력한 주민등록번호 : ${jumin.substr(0,7)}****** <br>`
+        str += `${result}`;
+        document.querySelector("#dl2").innerHTML = str;
+
+    }
+
+    function f_info(){
+        var jumin = prompt("주민번호 입력","110326-4432618");
+        // 자료추출 (index 01:연도/23:월/45:일/7:성별 및 출생년도)
+        
+        var y = jumin.substring(0,2); // slice(0,2) substr(0,2)
+        var m = jumin.substring(2,4); // slice(2,4) substr(2,2)
+        var d = jumin.substring(4,6); // slice(4,6) substr(4,2)
+        var g = jumin.substring(7,8); // slice(7,8) substr(7,2) charAt(7)
+        console.log(y);
+        console.log(m);
+
+        // 출생년도
+        var yy = "";
+        if(g == "1" || g == "2"){
+            yy = "19";
+        }else if(g == "3" || g == "4"){
+            yy = "20";
+        }
+        
+        // 성별
+        var gd = "";
+        if(g == "1" || g == "3"){
+            gd = "남자";
+        }else if(g == "2" || g == "4"){
+            gd = "여자";
+        }
+
+        // 생일
+        var bir = yy.concat(y) + "년" + m + "월" + d + "일";
+        
+        // 나이
+        var now = new Date();
+        var year = now.getFullYear(); // 4자리 연도
+        var age = year - yy.concat(y);
+
+        // 출력 데이터 작성
+        var result = `주민등록번호 : ${jumin.substring(0,8)}******`;
+        result += `생년월일 : ${bir} <br>`;
+        result += `나이 : ${age}살 <br>`;
+        result += `성별 : ${gd}`;
+        document.querySelector("#dl").innerHTML = result;
+        // document.getElementById('d1').innerHTML = result;
+        // document.querySelector("#dl").innerHTML = result;
+        
+        // 출생년도
+        // 생일 : 2011년 3월 26일
+        // 성별 : 여자
+        // 나이 : 12
+    }
+
+</script>
+</html>
