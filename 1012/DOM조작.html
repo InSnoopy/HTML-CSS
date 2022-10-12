@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    
+    버트늘 눌렀을때 네이버로 연결되는 하이퍼 링크 만들기
+    <input type="button" value="버튼" onclick="link()">
+    <h5>요소 생성하기</h5>
+    <input type="button" value="추가" id="id_add">
+    <h5>이미지 추가하기</h5>
+    <input type="button" value="img추가" id="img_add">
+    <div id="id_disp"></div>
+    <script src="/js/random.js"></script>
+    <!-- <img src="/images/imgs/꼬부기1.jpg" alt=""> -->
+    <script>
+
+        var v_disp = document.getElementById('id_disp');
+        var v_isAdd = document.getElementById('id_add');
+        var v_imgAdd = document.getElementById('img_add');
+
+        var v_index=1;
+        v_imgAdd.addEventListener("click",function(){
+            // var v_div = document.createElement('div');
+            var v_img = document.createElement('img');
+            v_img.src = `/images/imgs/꼬부기${v_index}.jpg`;
+            // setAttribute로도 접근이 가능하다.
+            v_img.setAttribute("alt","사진입니다.");
+            v_img.width = 100;
+            
+            console.log(v_img);
+            id_disp.appendChild(v_img);
+            
+            if(v_index <= 6){
+                v_index++;
+            }else{
+                v_index=1;
+            }  
+
+            // 방법1) createElement으로 이용하는 방법
+            // .으로 접근 or setAttribute로 접근하는 방법 
+            // 방법2) 문자열을 이용해서 요소 생성하기
+
+            // 단일 태그를 사용할 경우 방법1)
+            // 다중 태그일 경우 방법2)
+
+            //문자열을 이용해서 요소 생성하기
+            var v_str = "<img src='/images/imgs/꼬부기1.jpg' alt=''>";
+            v_disp.innerHTML += v_str;
+
+        })
+
+        // 이벤트 부여하기
+        // 이렇게 이벤트를 부여하는걸 권장한다.
+        v_isAdd.addEventListener("click",function(){
+            // alert("이벤트가 실행되면 여기로 오죠");
+            var v_h1 = document.createElement('h1');
+            console.log(v_h1);
+            v_h1.innerHTML = "안녕하세요";
+            // v_h1.style.color = "gold";
+            v_h1.style.color = f_ranColor(); // 랜덤 색상
+            // v_h1.style.backgroundColor = 'green';
+            v_h1.style.backgroundColor = f_ranColor() // 랜덤 색상
+            v_disp.appendChild(v_h1);
+        })
+
+        function f_ranColor(){
+            var num1 = f_random(0,255);
+            var num2 = f_random(0,255);
+            var num3 = f_random(0,255);
+            return `rgb(${num1},${num2},${num3})`;
+        }
+
+        function link(){
+            var v_tagA = document.createElement("a");
+            // v_tagA.href = "http://naver.com";
+            // 아래처럼 setAttribute 메소드로 사용 가능하다.
+            v_tagA.setAttribute("href","http://ddit.or.kr")
+            v_tagA.innerHTML = "네이버로 이동";
+            v_tagA.style.display = "block";
+            // console.log(v_tagA);
+            v_disp.appendChild(v_tagA);
+        }
+
+
+    </script>
+</body>
+</html>
