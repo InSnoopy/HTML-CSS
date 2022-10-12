@@ -5,6 +5,28 @@
     <title>Document</title>
 </head>
 <body>
-    안녕
+    <h3>열린 창</h3>
+    <!-- inkeydown -> key를 누르게 되면 event 발생 -->
+    <textarea id="new_text" cols="30" rows="20" onkeydown="f_kd()"></textarea>
+    <input type="button" value="버튼" onclick="f_chat()">
 </body>
+<script>
+
+    var v_newTxt = document.querySelector('#new_text');
+    function f_chat(){
+        // opener 부모를 가리킨다.
+        opener.document.querySelector('#old_text').value = v_newTxt.value;
+        opener.console.log(v_newTxt.value);
+    }
+    
+    function f_kd(){
+
+        opener.console.log(event);
+        
+        if(event.key == 'Enter'){
+            f_chat();
+        }
+    }
+
+</script>
 </html>
