@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+<style>
+    #id_disp{
+        font-size:0;
+        border: 2px solid gray;
+        width:424px;
+    }
+    img{
+        width:100px;
+        margin:3px;
+    }
+</style>
+</head>
+<body>
+    <div id="id_disp">
+        <img src="/images/imgs/꼬부기1.jpg" alt="">
+        <img src="/images/imgs/꼬부기2.jpg" alt="">
+        <img src="/images/imgs/꼬부기3.jpg" alt="">
+        <img src="/images/imgs/꼬부기4.jpg" alt="">
+    </div>
+    <input type="button" value="&lt;&lt;" id="moveLeft">
+    <input type="button" value="&lt; auto" id="autoLeft">
+    <input type="button" value="정지" id="autoStop">
+    <input type="button" value="auto &gt;" id="autoRight">
+    <input type="button" value="&gt;&gt;" id="moveRight">
+
+<script>
+    var v_mL = document.querySelector("#moveLeft");
+    var v_autoL = document.querySelector("#autoLeft")
+    var v_stop = document.querySelector("#autoStop")
+    var v_mR = document.querySelector("#moveRight");
+    var v_autoR = document.querySelector("#autoRight")
+    var v_disp = document.querySelector("#id_disp");
+    var to = "";
+
+    v_mL.addEventListener("click",function(){
+        var img1 = document.querySelectorAll("img")[0];
+        v_disp.appendChild(img1);
+    });
+    
+    v_autoL.addEventListener("click",function fn1(){
+        var img1 = document.querySelectorAll("img")[0];
+        v_disp.appendChild(img1);
+        to = setTimeout(fn1,100);
+    });
+    
+    v_stop.addEventListener("click",function(){
+        clearTimeout(to);
+        // removeAttribute : 속성 삭제
+        v_autoR.removeAttribute("disabled");
+    })
+    
+    v_autoR.addEventListener("click",function fn2(){
+        // disabled : 비활성화
+        v_autoR.setAttribute("disabled",true)
+        var last = v_disp.lastElementChild;
+        // 마지막 요소를 대상으로 앞쪽으로 붙이려고한다.
+        // insertBefore(삽입대상, 삽입위치지정)
+        v_disp.insertBefore(last,v_disp.firstChild);
+        to = setTimeout(fn2,100);
+    })
+    
+    v_mR.addEventListener("click",function(){
+        var last = v_disp.lastElementChild;
+        v_disp.insertBefore(last,v_disp.firstChild);
+    })
+
+</script>
+</body>
+</html>

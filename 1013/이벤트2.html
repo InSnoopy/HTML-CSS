@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+<style>
+    #wrapper{
+        border-style:solid;
+    }
+</style>
+</head>
+<body>
+    <div id="wrapper" onmouseover="f_over(this)" onmouseout="f_out(this)">
+        <div>어디로</div>
+        <div style="display:none">
+        <!-- <div style="visibility:hidden;"></div> -->
+            <a href="//naver.com">네이버</a>
+            <a href="//google.com">구글</a>
+            <a href="//daum.net">다음</a>
+            <a href="//www.ddit.or.kr">대덕</a>
+        </div>
+    </div>
+<script>
+
+    var parent = document.querySelector("#wrapper");
+
+    var copy = parent.cloneNode(true);
+
+    function f_over(p_this){
+        // 매개변수를 기점으로 대상요소를 찾아서 속성 변경
+        parent.children[1].style.display = "block";
+        // display >> block이 되도록
+
+    }
+    function f_outr(p_this){
+        parent.children[1].style.display = "nones";
+        // display >> none이 되도록
+    }
+</script>
+</body>
+</html>

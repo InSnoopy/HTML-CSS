@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+<style>
+    #id_disp{
+        font-size:0;
+        border: 2px solid gray;
+        width:424px;
+    }
+    img{
+        width:100px;
+        margin:3px;
+    }
+</style>
+</head>
+<body>
+    <div id="id_disp">
+        <img src="/images/imgs/꼬부기1.jpg" alt="">
+        <img src="/images/imgs/꼬부기2.jpg" alt="">
+        <img src="/images/imgs/꼬부기3.jpg" alt="">
+        <img src="/images/imgs/꼬부기4.jpg" alt="">
+    </div>
+
+
+
+    <input type="button" value="&lt; auto" id="autoLeft" onclick="f_proxyStartR()">
+    <input type="button" value="정지" id="autoStop" onclick="f_proxyEnd()">
+    <input type="button" value="auto &gt;" id="autoRight" onclick="f_proxyStartL()">
+
+
+<script>
+
+    var v_autoL = document.querySelector("#autoLeft")
+    var v_stop = document.querySelector("#autoStop")
+    var v_autoR = document.querySelector("#autoRight")
+
+    var v_disp = document.querySelector("#id_disp");
+    var to = "";
+
+    function fnR(){
+        var last = v_disp.lastElementChild;
+        v_disp.insertBefore(last,v_disp.firstChild);
+        to = setTimeout(fnR,100);
+    }
+
+    function fnL(){
+        var img1 = document.querySelectorAll("img")[0];
+        v_disp.appendChild(img1);
+        to = setTimeout(fnL,100);
+    }    
+
+    function f_stop(){
+        clearTimeout(to);
+    }
+
+    // proxy(대신,대리라는 뜻) pattern
+    var exist = false; // 상태 변수
+    function f_proxyStartR(){
+        if(!exist){
+            fnR();
+            exist = true;
+        }
+    }
+    function f_proxyStartL(){
+        if(!exist){
+            fnL();
+            exist = true;
+        }
+    }
+    function f_proxyEnd(){
+        f_stop();
+        exist = false;
+    }
+
+
+</script>
+</body>
+</html>
