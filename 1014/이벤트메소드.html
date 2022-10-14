@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+<style>
+    div{
+        position: relative;
+        left:30px;
+        top:30px;
+        border: 2px solid black;
+    }
+    #halmoney{
+        width: 300px;
+        height: 300px;
+    }
+    #mom{
+        width: 200px;
+        height: 200px;
+    }
+    #my{
+        width: 100px;
+        height: 100px;
+    }
+</style>
+</head>
+<body>
+    <h4>
+        이벤트 관련 두가지 메소드 기억하기<br>
+        preventDefault(): 기본 장착된 이벤트 기능 막음
+    </h4>
+    <!-- a href의 기능은 해당하는 페이지로 이동하는 이벤트를 기본적으로 가지고 있다. -->
+    <a href="../images/imgs/꼬부기1.jpg" class="view">이미지보기</a>
+
+    <!-- action을 통해서  -->
+    <form action="이벤트등록.html">
+        <input type="submit" value="제출">
+    </form>
+
+    <h4>stopPropagation(): 이벤트 버블링을 막음</h4>
+    <div id="halmoney" onclick="f_hal(this)">할머니
+        <div id="mom" onclick="f_mom(this)">엄마
+            <div id="my" onclick="f_my(this)">나</div>
+        </div>
+    </div>
+    
+
+<script>
+
+    // 하위 요소 눌렀을 때 상위 요소들까지 이벤트가 발현되는걸 이벤트 버블링이라고 한다.
+    // 나만 이벤트를 실행됬으면 좋겠을 때는 stopPropagation(); 을 부여하면
+    // 이벤트 버블링을 중지시킨다.
+    function f_hal(p_this){
+        p_this.style.border = "4px dotted brown";
+    }
+    function f_mom(p_this){
+        p_this.style.border = "4px inset gold";
+        event.stopPropagation();
+    }
+    function f_my(p_this){
+        p_this.style.backgroundColor = "red";
+        event.stopPropagation(); // 이게 없을때는 자식만 클릭하게되면
+                                 // 위에 부모들까지도 메소드가 다 실행된다.
+    }
+
+
+
+
+
+    var v_view = document.querySelector(".view");
+    var v_form = document.querySelector("form");
+
+    v_view.addEventListener('click',function(){
+        event.preventDefault(); // 하이퍼링크의 기능 상실
+    });
+
+    v_form.addEventListener('click',function(){
+        event.preventDefault(); // form-submit의 기능 상실
+    });
+
+</script>
+</body>
+</html>

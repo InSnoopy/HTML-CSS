@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+<style>
+
+    #move{
+        width:40px;
+        height: 40px;
+        background-color: red;
+        position:absolute;
+        left:0;
+        top:0;
+    }
+</style>
+</head>
+<body>
+    <div id="box">
+        <div id="move">배라</div>
+    </div>
+<script>
+    var v_mv = document.getElementById('move');
+    window.addEventListener('mousemove',function(){
+        console.log("마우스좌표", event.clientX);
+        console.log("마우스좌표", event.clientY);
+        v_mv.style.left=event.clientX + 'px';
+        v_mv.style.top=event.clientY + 'px';
+        console.log(event);
+    })
+</script>
+</body>
+</html>

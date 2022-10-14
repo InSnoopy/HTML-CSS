@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+<script>
+
+
+    // script가 위에 있어서 밑에 있는 div정보를 가져오지 못한다.
+    // 방법1. onload 방법
+    // window요소는 모든 window를 검색하고 실행하는거라 상대적으로 document보다 느리다.
+    window.onload = function(){
+    }
+    
+    // 방법2. document에 DOMContentLoaded 활용
+    document.addEventListener("DOMContentLoaded",function(){
+        console.log(document.querySelector("div").innerHTML);
+    });
+
+    // 방법3. load 이용
+    // document.addEventListener("load",function(){})
+
+</script>
+</head>
+<body>
+    <div>정보</div>
+</body>
+</html>

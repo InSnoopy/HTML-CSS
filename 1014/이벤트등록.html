@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+<style>
+    .bb{
+        border: 2px solid blue;
+    }
+</style>
+</head>
+<body>
+    <div id="wrapper" onclick="f_nflx()">
+        <div class="bb">글리치</div>
+        <div class="bb">수리남</div>
+        <div class="bb">종이의집</div>
+        <div class="bb">오징어게임</div>
+    </div>
+
+<script>
+
+    function f_nflx(){
+        alert("넷플릭스오리지날시리즈");
+    }
+
+    var parent = document.querySelector("#wrapper");
+    var v_bbs = document.querySelectorAll(".bb");
+    
+    for(var i=0; i<v_bbs.length; i++){
+        // 이미 생성되어있던(=정적) 요소에만 이벤트 적용
+        v_bbs[i].addEventListener('click',function(){
+            alert("재미썽");
+        });
+    }
+
+    parent.addEventListener('click',function(){
+        alert("이벤트의 대상은 부모, 자식은 위임받아요");
+    })
+
+    // 넷플릭스오리지날시리즈는 alert되는 이유는
+    // 부모 기준으로 이벤트가 부여해서 그 자식인 .bb 클래스는 생성하게 되도
+    // 이벤트가 실행된다.
+    parent.innerHTML += `<div class="bb">브리저튼</div>`
+
+    // 새롭게 작성된 코드는 기존 코드까지 다시 생성하기 때문에
+    // 이벤트가 적용되지 않는다. (= 동적요소는 이벤트가 적용되지 않음)
+    // (= 동적요소는 이벤트가 적용되지 않음)
+
+    // 동적, 정적 차이
+    // 정적 = 이미 만들어진 상태
+    // 동적 = 사용자가 어떤 액션을 취했을 때 생겨나는 요소
+    // 이벤트는 정적인 대상에만 해당된다.
+    // 새롭게 만들어진 동적 요소에는 이벤트 적용이 되지 않는다.
+
+    // 동적 요소에 이벤트를 부여하는 방법은 이벤트 위임을 해야한다.
+    // 동적요소는 이벤트 위임을 통해 이벤트를 부여 받는데, 
+    // 위임은 부모가 자식에게 물려주는 것
+    // 부모가 이벤트를 가지고 그 이벤트를 자식에게 물려주는 방법
+    // 단 부모가 절대적으로 '정적'요소야만 한다.
+    // 위임하는 부모가 동적요소면 자식한테도 부여할 수 없다.
+
+</script>
+</body>
+</html>
