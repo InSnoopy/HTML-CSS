@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+
+    <input type="file" id="id_file"  accept=".jpg, .png, .jfif, .gif" multiple/>
+    <div id="id_disp"></div>
+
+    
+<script>
+    var v_fileBtn = document.getElementById('id_file');
+    var v_disp = document.getElementById('id_disp');
+
+    v_fileBtn.onchange = function(){
+        var v_file = v_fileBtn.files; 
+
+        for(var i=0; i<v_file.length; i++){
+            reader(v_file[i]);
+        }
+
+    }
+
+    // 비동기식으로 처리되기 때문에 따로 reader라는 함수를 만들어 줘야한다.
+    // 동기적인 형태로 데이터를 흘러가도록 만들기 위해서
+    function reader(p_file){
+
+        // 객체 생성하기 (FileReader)
+        var v_freader = new FileReader();
+
+        // img동적요소를 생성하고 appendChild
+        v_freader.onload = function(){
+            var v_img = document.createElement("img");
+            v_img.src = v_freader.result;
+            v_img.width = 100;
+            v_img.height = 100;
+            v_disp.appendChild(v_img);
+        }
+        
+        // readAsDataURL 메소드 이용해 정보가공하고 result로 받을 준비
+        v_freader.readAsDataURL(p_file);
+
+    }
+
+</script>
+</body>
+</html>
