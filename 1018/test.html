@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<script>
+
+// 인터프리터 방식이라 맨위에서부터 차례대로 내려온다.
+// 하지만 밑에 코드를 실행하면 doc이 먼저 출력된다.
+// win, doc에서 약간의 속도의 차이가 있다.
+// win 보다 doc가 조금 더 빠르다.
+// jquery는 doc로 로드하는 방식이다.
+window.addEventListener("load",function(){
+    var v_div = document.querySelector("div").innerHTML;
+    console.log(v_div + "win");    
+})
+
+document.addEventListener("DOMContentLoaded",function(){
+    var v_div = document.querySelector("div").innerHTML;
+    console.log(v_div + "doc");    
+});
+
+
+</script>
+</head>
+<body>
+
+    <div>
+        124rafawfwqfwqfqwfwq
+        qwfwqfwqfwqfwqfwqf
+        qwfwqfwqfwqfwqfwqfqwfqwfqwfqwfwq
+        asfasfasf
+    </div>
+    
+</body>
+</html>
