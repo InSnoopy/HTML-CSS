@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="../js/jquery-3.6.1.min.js"></script>
+<script>
+    $(function(){
+        //속성 변경
+        //js방식 - 단일 속성 변경
+        // document.querySelectorAll('input')[2].removeAttribute('disabled'); //속성제거
+
+        //querySelectorAll input을검색 input 에 관련된 ?????해제가됨 
+        //('input') 대신 'form *'  ?
+        // for(var i=0; i<document.querySelectorAll('input').length; i++){
+        //     document.querySelectorAll('form *')[i].removeAttribute('disabled');
+        // }
+
+        //jq방식 - 일괄 속성 변경attr
+        $('*').attr('disabled',false); //true 가능 
+
+        
+
+       
+        $('form *:enabled').css('border', '3px ridge blue'); //form 하위의 모든것 
+        $('form *:disabled').css('border', '3px ridge red');
+    })
+</script>    
+</head>
+<body>
+    <form action="">
+        <input id="txt" disabled> <br>
+        <input type="password" id="pw" disabled> <br>
+        <select id="sel" disabled>
+            <option value="">1</option>
+            <option value="">2</option>
+            <option value="">3</option>
+            <option value="">4</option>
+        </select> <br>
+        <textarea id="mtline" disabled>multiLine</textarea> <br>
+        <input type="button" value="확인"onclick="alert()" disabled>
+    </form>
+    
+</body>
+</html>

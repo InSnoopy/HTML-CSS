@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<style>
+    img{
+        width:50px;
+        height: auto;
+    }
+</style>
+<script>
+    $(function(){
+        // alt속성을 갖는 []
+        $('img[alt]').css('border','double 4px');
+    
+        // 속성값이 일치하는 [=] -> type=button인 input요소
+        // 속성값이 시작하는 [^] -> href가 'mailto'로 시작하는 a요소
+        $('input[type=button], a[href^=mailto]').css("background-color","gold");
+
+        // 속성값이 같지않은 [!=]
+        $('img[class!=imgBR]').css("box-shadow","4px 4px 1px gray");
+
+        // 속성값이 끝나는 [$]
+        $('img[src$=png]').css("border","dotted 4px");
+
+        // 속성값이 포함하는 [*]
+        $('img[title*=named]').css("width","80px");
+
+        // 속성값이 포함하는(공백으로 분리된 값) [~]
+        // 앞 뒤에 공백인 경우
+        $('[href~=ddit]').css("text-decoration","line-through");
+
+        // 속성값이 같거나 시작하는 [|]
+        $('img[id|=baskin]').css("border-radius","25px");
+
+    })
+</script>
+</head>
+<body>
+    <a href="http://www. ddit .or.kr" title="namedDD">(재)대덕 인재 개발원</a> <br>
+	<a href="mailto: admin@ddit.or.kr">관리자에게 메일보내기</a> <br>
+
+	<img src="../images/imgs/꼬부기1.jpg" class="imgBR" id="baskin">
+	<img src="../images/imgs/꼬부기2.jpg" class="imgBR" id="vaskin">
+	<img src="../images/imgs/경하.png" class="imgBR" id="baskin-robbins">
+	<img src="../images/imgs/꼬부기4.jpg" class="imgBR" id="baskin_Robbins">
+	<img src="../images/imgs/꼬부기5.jpg" title="img named 5">
+	<img src="../images/imgs/꼬부기6.jpg" id="img6" title="coffeePot" alt="actress">
+	<img src="../images/imgs/꼬부기7.jpg" alt="actor">
+		
+	<form>
+		<input title="named textField">
+		<!-- form안에 위치한 button은 submit기능을 갖는다 -->
+		<button type="submit">Submit</button>
+	</form>
+	<button type="submit">Submit</button>
+	<input type="button" value="Button">
+</body>
+</html>

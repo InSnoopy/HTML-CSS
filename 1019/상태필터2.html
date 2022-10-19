@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="../js/jquery-3.6.1.min.js"></script>
+<script>
+    $(function(){
+        $('input:button').on('click',function(){
+            var hobby = "";
+
+            //입력양식선택자 : 상태필터 
+            $(':checkbox:checked').each(function(){
+                hobby += $(this).val();
+            });
+            alert("너의 취미는" + hobby);
+        });
+        if(hobby=="")return; //값이 없을때 하위 문장 실행하지 않고 되돌려 보냄
+        alert("너의 취미는" + hobby);
+    });
+
+
+</script>
+
+</head>
+<body>
+    <h4>취미 : </h4>
+    <input type="checkbox" value="여행">여행
+    <input type="checkbox" value="블로그">블로그
+    <input type="checkbox" value="베이킹">베이킹
+    <input type="checkbox" value="슬라임">슬라임
+    <input type="checkbox" value="골프">골프
+    <input type="button" value="선택">
+</body>
+</html>

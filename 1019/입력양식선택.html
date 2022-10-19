@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<script>
+
+    $(function(){
+
+        //input요소
+        $(':input').css('border','solid navy');
+        //input type=button인 요소
+        $(':input:button').css('background-color','yellow');
+        //type속성이 text, password인 요소
+        $(':text, :password').css('background-color','salmon');
+        //type속성이 radio,checkbox인 요소
+        $(':radio, :checkbox').css('background-color','gold').css('border','double green');
+        //type속성이 submit인 요소
+        $(':submit').css('background-color','yellowgreen');
+        //type속성이 reset인 요소
+        $('reset').css('background-color','orange');
+        //type속성이 file,image인 요소
+        $(':file, :image').css('border','outset white');
+        //button 요소와 input type이 button인 요소  
+        $(':button').css('border','dashed red');
+
+    });
+
+</script>
+<style>
+    [type=radio],
+    [type=checkbox] {
+        appearance: none; /* 기본적용된 스타일을 제거해줌 */
+        width: 1em;
+        height: 1em;
+    }
+    [type=radio]{
+        border-radius: 100%;
+    }
+    [type=radio]:checked,
+    [type=checkbox]:checked{
+        background-color: aquamarine;
+    }
+    
+
+</style>
+</head>
+
+<body>
+    
+    <form action="nofile.jsp" method="get">
+        Text : <input type="text" name="id"/> <br>
+        Password : <input type="password" name="pw"/> <br>
+        Radio : 
+        <input type="radio" name="rdo" id="radioA" value="A" checked>A
+        <input type="radio" name="rdo" id="radioB" value="B">B <br>
+        Checkbox : 
+        <input type="checkbox" name="chkbox" id="checkbox1" value="1"> 1
+        <input type="checkbox" name="chkbox" id="checkbox2" value="2"  checked/> 2 <br>
+        TextArea <br>
+        <textarea rows="10" cols="30" id="myTextArea"></textarea> <br>
+        Image : 
+        <input type="image" src="../images/imgs/꼬부기1.jpg" width="50" height="50"> <br>
+        File :
+        <input type="file"> <br>
+        Buttons : 
+        <!-- <button></button>은 form안에서 submit기능 갖음 -->
+        <button>전송</button>
+        <button type="button" id="normalBtn">Normal</button>
+        <button type="submit" id="submitBtn">Submit</button>
+        <button type="reset" id="resetBtn">Reset</button> <br>
+
+        <input type="button" value="일반버튼">
+        <input type="submit" value="전송버튼">
+        <input type="reset" value="초기화버튼">
+    </form>
+
+</body>
+</html>
