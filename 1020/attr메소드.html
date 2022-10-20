@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+
+<style>
+    img{
+        width:100px;
+        height: auto;
+    }
+</style>
+</head>
+<body>
+
+    <h4>img요소의 src속성 중 파일명만 추출하여 title속성값으로 설정</h4>
+    <img src="/images/imgs/꼬부기1.jpg" alt="">
+    <img src="/images/imgs/꼬부기2.jpg" alt="">
+    <img src="/images/imgs/꼬부기3.jpg" alt="">
+    <img src="/images/imgs/꼬부기4.jpg" alt="">
+    <img src="/images/imgs/꼬부기5.jpg" alt="">
+    
+<script>
+
+    $(function(){
+
+        // get - 첫번째 항목만 반환
+        console.log($('img').attr('src'));
+        
+        // set - 모든 항목에 일괄 적용
+        console.log($('img').attr('alt','동일함'));
+
+        
+        // 콜백함수 내부에서 반환하는 값으로 title속성을 적용하자        
+        $('img').attr('title',function(i,v){
+            var v_src= $(this).attr('src');
+            var str = v_src.lastIndexOf("/");
+            var end = v_src.lastIndexOf(".");
+            var fname = v_src.substring(str,end);
+            
+            return fname;
+        });
+
+        // 속성 제거
+        $('img').eq(3).removeAttr('title');
+
+        // 여러가지 속성 설정
+        $('img').eq(3).attr({'title':'다시 추가함'});
+        
+    });
+
+</script>
+
+</body>
+</html>
