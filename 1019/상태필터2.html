@@ -3,27 +3,58 @@
 <head>
     <meta charset="UTF-8">
     <title>Document</title>
-    <script src="../js/jquery-3.6.1.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 <script>
+
     $(function(){
+
         $('input:button').on('click',function(){
             var hobby = "";
 
             //입력양식선택자 : 상태필터 
-            $(':checkbox:checked').each(function(){
+            $(':checkbox:checked').each(function(i){
+                if(i>0) hobby += ",";
                 hobby += $(this).val();
             });
             alert("너의 취미는" + hobby);
+
+            // if(hobby=="")return; //값이 없을때 하위 문장 실행하지 않고 되돌려 보냄
+            if(hobby=="") hobby+="없어"; // 데이터 없음을 알림으로 띄움
+            alert("너의 취미는" + hobby);
         });
-        if(hobby=="")return; //값이 없을때 하위 문장 실행하지 않고 되돌려 보냄
-        alert("너의 취미는" + hobby);
+        
+
+    // $('select').on('change',function(){
+    
+    // });
+
+        $(':button').on('click',function(){
+    
+                var opt = "";
+                // 단일 선택 값
+                // alert($('#sel option:selected').val());
+                
+                // 여러개 선택 값
+                $('#sel option:selected').each(function(i){
+                    if(i>0) opt += ",";
+                    opt += $(this).val();
+                });
+                alert($('h4').eq(1).html() + "\n" + opt);
+    
+        });
+
     });
+        
+
+
+
 
 
 </script>
 
 </head>
 <body>
+
     <h4>취미 : </h4>
     <input type="checkbox" value="여행">여행
     <input type="checkbox" value="블로그">블로그
@@ -31,5 +62,16 @@
     <input type="checkbox" value="슬라임">슬라임
     <input type="checkbox" value="골프">골프
     <input type="button" value="선택">
+
+    <h4>봄소식 : </h4>
+    <select id="sel" multiple size="5">
+        <option>개나리</option>
+        <option selected>진달래</option>
+        <option>민들레</option>
+        <option>목련</option>
+        <option>왕벚꽃</option>
+    </select>
+    <button>선택</button>
+
 </body>
 </html>
