@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="/js/jquery-3.6.1.min.js"></script>
+    <style>
+        img {
+            width: 100px;
+            height: 100px;
+            padding: 10px;
+            margin: 10px;
+            border: 15px solid red;
+        }
+
+        .pColor {
+            color: lime;
+        }
+
+        .pBgYello {
+            background-color: yellow;
+        }
+
+        .pBgBlue {
+            background-color: blue;
+        }
+
+        .pBgRed {
+            background-color: red;
+        }
+        .borderGray{
+            border: 5px groove gray;
+            border-radius:20%;
+        }
+        .borderGold{
+            border: 7px outset gold;
+            border-radius:15%;
+        }
+        div{
+            margin: 10px;
+            padding: 20px;
+            border: 1px solid black;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <input type="button" value="확인" id="btn">
+        <p>click!!</p>
+        <p>click!!</p>
+        <p>click!!</p>
+        <p>click!!</p>
+
+        <div></div>
+
+        <img src="../images/꽃1.jpg" alt="">
+        <img src="../images/꽃2.jpg" alt="">
+        <img src="../images/꽃3.jpg" alt="">
+        <img src="../images/꽃4.jpg" alt="">
+        <img src="../images/꽃5.jpg" alt="">
+    </div>
+    <script>
+        $('#btn').click(function () {
+            // $('p').css('color', 'pink') // css()메소드로 스타일 지정
+            $('p').addClass('pColor') // 클래스변수와 addClass()로 스타일 지정
+        })
+        $('p').click(function () {
+            // $(this).addClass('pBgRed')
+            // hasClass와 removeClass를 이용하여 add-remove
+            // if($(this).hasClass('pBgBlue')){
+            //     $(this).removeClass('pBgBlue')
+            // } else {
+            //     $(this).addClass('pBgBlue')
+            // }
+            $(this).toggleClass('pBgYello')
+        })
+        $('div:empty').on('mouseover', function(){
+            $(this).addClass('pBgRed')
+        })
+        $('div:empty').on('mouseout', function(){
+            $(this).removeClass('pBgRed')
+        })
+        // $('img').on('mouseover', function(){
+        //     $(this).addClass('borderGold')
+        // })
+        // $('img').on('mouseout', function(){
+        //     $(this).removeClass('borderGold')
+        // })
+
+        $('img').hover(
+        function(){
+            $(this).addClass('borderGold')
+        } ,function(){
+            $(this).removeClass('borderGold')
+        })
+
+        $('img').click(function(){
+            $(this).toggleClass('borderGray')
+        })
+
+        function log(p_arg1, p_arg2){
+            console.log(p_arg1, p_arg2);
+        }
+
+        // 높이 너비 메소드
+        log($('img').width(),"padding,margin,border미포함")
+        log($('img').innerWidth(),"padding포함")
+        log($('img').outerWidth(),"padding,border포함")
+    </script>
+</body>
+</html>

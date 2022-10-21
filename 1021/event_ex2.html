@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="/js/jquery-3.6.1.min.js"></script>
+    <style>
+        img{
+            width: 100px;
+            height: 100px;
+        }
+    </style>
+</head>
+<body>
+    <img src="../images/꽃1.jpg" data-src="../images/서현.jpg">
+    <img src="../images/꽃2.jpg" data-src="../images/수영.jpg">
+    <img src="../images/꽃3.jpg" data-src="../images/써니.jpg">
+    <img src="../images/꽃4.jpg" data-src="../images/유리.jpg">
+    <img src="../images/꽃5.jpg" data-src="../images/윤아.jpg">
+
+    <script>
+        $('img').on({mouseenter:function(){
+            let v_src = $(this).attr('src') // 기존 이미지
+            // let v_src2 = $(this).attr('data-src') // 변경될 이미지
+            let v_src2 = $(this).data('src') // 변경될 이미지
+            console.log(v_src,v_src2)
+            $(this).attr('src',v_src2)
+
+        },mouseleave:function(){
+
+        },dblclick:function(){
+
+        }})
+    </script>
+
+</body>
+</html>

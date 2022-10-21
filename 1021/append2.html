@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="/js/jquery-3.6.1.min.js"></script>
+    <style>
+        div{
+            font-size: 0;
+        }
+        img {
+            width: 50px;
+            height: 50px;
+            margin: 2px;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <img src="../images/꽃1.jpg" alt="">
+        <img src="../images/꽃2.jpg" alt="">
+        <img src="../images/꽃3.jpg" alt="">
+        <img src="../images/꽃4.jpg" alt="">
+        <img src="../images/꽃5.jpg" alt="">
+    </div>
+    <input type="button" value="append">
+    <input type="button" value="prepend">
+    <script>
+        $('input:button').eq(0).on('click', function(){
+            $('img').first().appendTo($('div'))
+        })
+        $('input:button').eq(1).on('click', function(){
+            $('img').last().prependTo($('div'))
+        })
+    </script>
+</body>
+
+</html>
