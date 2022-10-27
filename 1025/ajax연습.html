@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <div id="disp"></div>
+    <input type="button" value="AJAX 호출" onclick="f_ajax()">
+    <input type="button" value="CSV" onclick="f_csv()">
+    <input type="button" value="JSON" onclick="f_json()">
+    <input type="button" value="XML" onclick="f_xml()">
+<script>
+    //AJAX 호출
+    function f_ajax(){
+        var v_ajx = new XMLHttpRequest;
+        v_ajx.open("get","dummy.txt",true);
+        v_ajx.onreadystatechange=function(){
+            //console.log(v_ajx.status);
+            
+            if(v_ajx.readyState==4 && v_ajx.status==200){
+                alert(v_ajx.responseText);
+            }
+        }
+        v_ajx.send();
+    }
+
+    //csv데이터 받아오기
+    function f_csv(){
+        //ajax를 이용해 데이터를 받아오고 
+        // console.log 로 데이터 표현해보자
+        var v_csv = new XMLHttpRequest;
+        v_csv.open("get","test.csv",true);
+        v_csv.onreadystatechange=function(){
+            
+            if(v_csv.readyState==4 && v_csv.status==200){
+                console.log(v_csv.responseText);
+                f_test(this.responseText);
+                
+            }
+        }
+        v_csv.send();
+    }
+
+    //값을 넘겨 받아 table 형식으로 출력하기
+    var v_disp = document.getElementById('disp');
+
+    function f_test(p_arg){
+        var v_lines = p_arg.split("\n"); //줄넘김 기호(line feed)로 한줄 씩 데이터 분리 
+        var v_tbl = "<table border=1>";
+        for(var i=0; i<v_lines.length; i++){
+            var v_str = v_lines[i].split(",");
+            v_tbl += "<tr>"; //행 안에 
+
+                //분리된 내용을 cell공간(td)에 순차적으로 찍어주는데 ...
+                for(var j=0; j<v_str.length; j++){
+                    v_tbl += "<td>"+v_str[j]+"</td>";
+                }
+            v_tbl += "</tr>";    
+        }
+        v_tbl += "</table>";
+        v_disp.innerHTML = v_tbl;
+    }
+
+
+    function f_json(){
+        var v_json = new XMLHttpRequest;
+        v_json.open("get","test.json",true);
+        v_json.onreadystatechange=function(){
+            if(v_json.readyState==4 && v_json.status==200){
+                //console.log(v_json.responseText); 
+                //json데이터를 자바스크립트 객체로 변환필요 => JSON.parse
+                var jsonObjArr= JSON.parse(this.responseText);
+                console.log(jsonObjArr);
+                f_test2(jsonObjArr);
+            }
+        }
+        v_json.send();
+
+        function f_test2(p_arg){
+            var v_tbl = "<table border=1>";
+
+            //object의 key 정보를 테이블헤더로 표시하기 object의 values 이용     
+            var v_vals = Object.values(p_arg);
+            //name, type, alias 키의 정보가 배열 형태로 들어있다.
+            //배열 중 하나를 선택하기 위해 index는아무거나 골라요
+            var v_keys = Object.keys(v_vals[0]); //['name','type','alias']
+
+                // v_tbl += "<tr><td>이름</td><td>종류</td><td>별명</td></tr>"; 밑에 코드 추천 
+                v_tbl += `<tr><td>${v_keys[0]}</td><td>${v_keys[1]}</td><td>${v_keys[2]}</td></tr>`;
+
+                for(var i=0; i<p_arg.length; i++){
+
+                    v_tbl += "<tr>";
+                    v_tbl += "<td>"+p_arg[i].이름+"</td>";
+                    v_tbl += `<td>${p_arg[i].타입}</td>`;
+                    v_tbl += `<td>${p_arg[i]["별명"]}</td>`;
+                    v_tbl += "</tr>";
+                }
+                
+                v_tbl += "</table>";
+                v_disp.innerHTML = v_tbl;
+        }
+    }
+    //xml 데이터 받아오기 
+    function f_xml(){
+        
+
+    }
+
+
+
+
+
+
+</script>
+</body>
+</html>

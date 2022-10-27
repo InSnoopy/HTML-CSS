@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="/js/jquery-3.6.1.min.js"></script>
+
+</head>
+<body>
+
+    <button>JSON 변환 테스트</button>
+    <div></div>
+
+<script>
+    $('button').on('click',function(){
+        // 자바스크립트 객체 생성
+        var obj = {
+            json : "제이슨",
+            특징 : "경량의 데이터 교환 표준으로 xml의 대안",
+            형태 : "JS 리터럴 표현식을 활용한 간단한 문자열 포맷",
+            method : ["stringify()","parse()"],
+            기능 : {stringify:"JS객체를 JSON화", parse:"JSON데이터를 JS객체화"}
+        };
+
+        // JS 객체 => JSON 문자열로 변환하기
+        var jsonStr = JSON.stringify(obj);
+        
+        var jsonObj = JSON.parse(jsonStr);
+
+        var result = "";
+        console.log(jsonObj);
+        // result += jsonObj.json;
+        result += jsonObj.기능.parse;
+        console.log(result);
+        // var x = typeof(obj);
+        // console.log(x);
+        // var jsonStr = JSON.stringify(obj);
+        // var x = typeof(jsonStr);
+        // console.log(x);
+        // var jsonStr2 = JSON.parse(jsonStr);
+        // var x2 = typeof(jsonStr2);
+        // console.log(x2);
+    });
+</script>
+    
+</body>
+</html>

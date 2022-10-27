@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="/js/jquery-3.6.1.min.js"></script>
+<style>
+    img{
+        width:100px;
+
+    }
+    #d1{
+        border: 30xp solid yellow;
+        padding:10px;
+        display:inline-block;
+    }
+</style>
+</head>
+<body>
+    <div>
+        <img src="/images/imgs/꼬부기1.jpg" alt="">
+    </div>
+    <input type="button" id="toRigth" value=">>">
+    <input type="button" id="toLeft" value="<<">
+
+<script>
+    $('#d1').on('click',function(){
+        // img에 effect를 줄건데
+        $('img').toggle();
+    })
+</script>
+</body>
+</html>
