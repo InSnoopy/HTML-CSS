@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<body>
+    <div></div>
+
+<script src="/js/jquery-3.6.1.min.js"></script>
+<script>
+    // 2번째 방법
+    // 서버가 제공하는 데이터처럼 jsonp.json에 데이터를 넣어둠
+    $.ajax({
+    url:'jsonp.json', // 서버로서 요청데이터를 주는 곳이다 셈 칩시다.
+    dataType:'jsonp',
+    jsonpCallback:'myCallback',
+    success:function(aa){
+        console.log(aa);
+        console.log(aa.body)
+        $.each(aa.body, function(){
+            console.log(this.BSSH_NM);
+            $('div').append(this["BSSH_NM"] + "<br>");
+        });
+    },
+    error:function(xhr){
+        alert("상태:" + xhr.status);
+    }
+});
+
+</script>
+
+</body>
