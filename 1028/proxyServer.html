@@ -3,6 +3,7 @@
 <body>
     <div></div>
 <script src="/js/jquery-3.6.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/x2js/1.2.0/xml2json.min.js"></script>
 <script>
     // proxy server를 통한 우회 방식
     // 브라우저와 서버 간 통신을 가능하게 만드는 중계서버
@@ -16,7 +17,9 @@
         // 그중 serviceKey는 개인정보이므로 인코딩(암호화)된 형태로 전달한다.
 
         // 1. 아래 처럼 ? 뒤에 쿼리를 작성해서 get방식으로 요청
-        url: 'https://apis.data.go.kr/6300000/eventDataService/eventDataListJson?serviceKey=KqOoUMQ6KiQREu7eRBi%2BjYAAdyX6Rub8UHJhRKpAAKAFsvJ%2BdPjael2Kt7BgvrHpQOMlmmDhd4X4A%2BsdDsOukw%3D%3D&pageNo=12&numOfRows=5',
+        // url: 'https://apis.data.go.kr/6300000/eventDataService/eventDataListJson?serviceKey=KqOoUMQ6KiQREu7eRBi%2BjYAAdyX6Rub8UHJhRKpAAKAFsvJ%2BdPjael2Kt7BgvrHpQOMlmmDhd4X4A%2BsdDsOukw%3D%3D&pageNo=12&numOfRows=5',
+        url: 'http://cors-anywhere.herokuapp.com/https://news.google.com/rss?hl=ko&gl=KR&ceid=KR:ko',
+        dataType: 'text',
 
         // 2. data에 감싸서 보내는 post방식으로 요청
         // url: 'https://apis.data.go.kr/6300000/eventDataService/eventDataListJson',
@@ -24,18 +27,23 @@
         // *. 원래 아래처럼 앞에 http://cors-anywhere.herokuapp.com를 붙어줘야지 cors가 적용된다.
         // Access-Control-Allow-Origin:* 설정을 해줌으로써 열리게 해준다.
         // url: 'http://cors-anywhere.herokuapp.com/https://apis.data.go.kr/6300000/eventDataService/eventDataListJson?serviceKey=KqOoUMQ6KiQREu7eRBi%2BjYAAdyX6Rub8UHJhRKpAAKAFsvJ%2BdPjael2Kt7BgvrHpQOMlmmDhd4X4A%2BsdDsOukw%3D%3D&pageNo=3&numOfRows=9',
-        data: {
-            // decoding(복호화)인증key 사용
-            // 'serviceKey':'KqOoUMQ6KiQREu7eRBi+jYAAdyX6Rub8UHJhRKpAAKAFsvJ+dPjael2Kt7BgvrHpQOMlmmDhd4X4A+sdDsOukw==', // decoding 인증key
-            // 'pageNo':'12',
-            // 'numOfRows':'5'
-        },
-        dataType: 'json',
+
+        // data: {
+        //     // decoding(복호화)인증key 사용
+        //     // 'serviceKey':'KqOoUMQ6KiQREu7eRBi+jYAAdyX6Rub8UHJhRKpAAKAFsvJ+dPjael2Kt7BgvrHpQOMlmmDhd4X4A+sdDsOukw==', // decoding 인증key
+        //     // 'pageNo':'12',
+        //     // 'numOfRows':'5'
+        // },
+
+        // dataType: 'json',
         success:function(a){
             console.log(a);
-            $.each(a.msgBody,function(i){
-                $('div').append(a.msgBody[i].title + "<br>")
-            })
+            var x2j = new X2JS();
+            var data = x2j.xml_str2json(a);
+            console.log(data);
+            // $.each(a.msgBody,function(i){
+            //     $('div').append(a.msgBody[i].title + "<br>")
+            // })
         },
         error:function(xhr){
             alert(xhr.status);
